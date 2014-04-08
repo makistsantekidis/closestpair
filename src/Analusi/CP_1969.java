@@ -244,15 +244,16 @@ public class CP_1969 extends ClosestPair {
     public Pair divideAndConquer(List<Point> pointsSortedByX, List<Point> pointsSortedByY) {
         Pair closestPair = new Pair(pointsSortedByX.get(0),pointsSortedByX.get(1));
         
-        for (int i=2;i<pointsSortedByX.size();++i)
-            if (closestPair.getDistance()>distance(pointsSortedByX.get(i-1), pointsSortedByX.get(i)))
-                closestPair = new Pair(pointsSortedByX.get(i-1), pointsSortedByX.get(i));
+        // idea that did not work
+//        for (int i=2;i<pointsSortedByX.size();++i)
+//            if (closestPair.getDistance()>distance(pointsSortedByX.get(i-1), pointsSortedByX.get(i)))
+//                closestPair = new Pair(pointsSortedByX.get(i-1), pointsSortedByX.get(i));
+//        
+//        for (int i=2;i<pointsSortedByY.size();++i)
+//            if (closestPair.getDistance()>distance(pointsSortedByY.get(i-1), pointsSortedByY.get(i)))
+//                closestPair = new Pair(pointsSortedByY.get(i-1), pointsSortedByY.get(i));
         
-        for (int i=2;i<pointsSortedByY.size();++i)
-            if (closestPair.getDistance()>distance(pointsSortedByY.get(i-1), pointsSortedByY.get(i)))
-                closestPair = new Pair(pointsSortedByY.get(i-1), pointsSortedByY.get(i));
-        
-       // closestPair = findClosestPairbyX(pointsSortedByX);
+        closestPair = findClosestPairbyX(pointsSortedByX);
         return closestPair;
     }
 
@@ -267,13 +268,11 @@ public class CP_1969 extends ClosestPair {
      * @param args
      */
     public static void main(String[] args) {
-        for (int i=0;i<100;i++){
+
         List<Point> points = generatePoints(1000);
         CP_1969 dc = new CP_1969();
-//        System.out.println(dc.evaluateResult(points) ? "Correct" : "Wrong");
-        if (!dc.evaluateResult(points))
-            System.out.println("WRONG");
-        }
+        System.out.println(dc.evaluateResult(points) ? "Correct" : "Wrong");
+
 //        List<Point> points = generatePoints(10000000);
 //        CP_1969 dc = new CP_1969();
 //        dc.sortByX(points);
